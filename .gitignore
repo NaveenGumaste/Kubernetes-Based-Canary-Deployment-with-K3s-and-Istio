@@ -1,0 +1,23 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# JavaScript dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+*.log
+
+# Local project reports
+/.guide/.canary-lab/
+
+# OS and editor files
+.DS_Store
+Thumbs.db

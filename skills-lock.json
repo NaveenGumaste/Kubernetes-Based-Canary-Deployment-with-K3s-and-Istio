@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "skills": {
+    "git-skill": {
+      "source": "NaveenGumaste/keyskills",
+      "commit": "5cae75238d579dc72652fc37c39d04ecb0705fb6",
+      "sourceType": "github",
+      "skillPath": "skills/git-skill/SKILL.md",
+      "computedHash": "29ab514c18184d26b2b0f1a05b4fafaff066f14f0f32f8176d1d60575588cab1"
+    }
+  }
+}
