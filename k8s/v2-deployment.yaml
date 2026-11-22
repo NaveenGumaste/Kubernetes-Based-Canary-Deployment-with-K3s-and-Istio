@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: status-dashboard-v2
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: status-dashboard
+      version: v2.0.0
+  template:
+    metadata:
+      labels:
+        app: status-dashboard
+        version: v2.0.0
+    spec:
+      containers:
+        - name: dashboard
+          image: status-dashboard:v2.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3000
+          env:
+            - name: APP_VERSION
+              value: "2.0.0"
+            - name: APP_RELEASE_ID
+              value: "canary"
+            - name: APP_ENV
+              value: "production"
+            - name: APP_INSTANCE_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          readinessProbe:
+            httpGet:
+              path: /api/ready
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+            initialDelaySeconds: 10

@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: status-dashboard
+  namespace: default
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - status-dashboard-gateway
+  http:
+    - route:
+        - destination:
+            host: status-dashboard.default.svc.cluster.local
+            subset: v1
+            port:
+              number: 3000
+          weight: 100
+        - destination:
+            host: status-dashboard.default.svc.cluster.local
+            subset: v2
+            port:
+              number: 3000
+          weight: 0
